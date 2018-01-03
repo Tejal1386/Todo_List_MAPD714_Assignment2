@@ -9,27 +9,33 @@
 import UIKit
 import FirebaseDatabase
 
+
+/// ViewController file extends UITableViewDelegate and UITableViewDataSource
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
-    
+    //Database reference
     var ref: DatabaseReference!
     
+    // outlet
+    @IBOutlet weak var todoListName: UITextField!
+    @IBOutlet weak var myTableView: UITableView!
     
+    //variables to transfer values from one view to anotherview
     var Name:String = ""
     var Note:String = ""
     var Key:String = ""
     var completed:Bool = false
+    
+    //object of TodoList Class
     var Todo_List = [TodoList]()
-    
-    @IBOutlet weak var todoListName: UITextField!
-    @IBOutlet weak var myTableView: UITableView!
-    
   
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        // initialise database reference
         ref = Database.database().reference().child("TodoList")
         
+        //Get data from Firebase database and appand with Todo_List object, to display in tableview
         ref.observe(DataEventType.value, with: {(DataSnapshot) in
             if DataSnapshot.childrenCount>0 {
                 self.Todo_List.removeAll()
@@ -43,35 +49,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let todolist = TodoList(id: list_id as! String?, Notes: note as! String?, Name: name as! String?, Completed: completed as! Bool?)
                     
                     self.Todo_List.append(todolist)
-                    
-                    
                 }
             }
-            
-           self.myTableView.reloadData()
+          self.myTableView.reloadData()
         })
-      
-      
-    }
-
-    //Saving item to database
-    @IBAction func saveButton(_ sender: UIButton) {
-        
-        let key = ref.childByAutoId().key
-        
-        let todo_List = ["id": key,
-                         "Name": todoListName.text! as String,
-                         "Note": todoListName.text! as String,
-                         "Completed": false as Bool] as [String : Any]
-        
-        ref.child(key).setValue(todo_List)
-    
     }
     
-    //setting up Table View
+    //////////////////////////////////////////   setting up Table View  //////////////////////////////////////////
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return Todo_List.count
+        return Todo_List.count
     }
     
     
@@ -93,25 +80,56 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if list.Completed == false {
             switchView.setOn(true, animated: true)
             cell.backgroundColor =  UIColor.white
-             cell.editTodo.isHidden = false
+            cell.editTodo.isHidden = false
         }
         else {
-            cell.backgroundColor =  UIColor.lightGray
-            cell.editTodo.isHidden = true
+            cell.backgroundColor =  UIColor.lightGray       // when task is done on switch off event tablecell is grayed out
+            cell.editTodo.isHidden = true                   // when task is done on switch off event editbutton is hidden
             switchView.setOn(false, animated: false)
         }
         switchView.tag = indexPath.row // for detect which row switch Changed
         switchView.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         cell.accessoryView = switchView
-    
-    
+        
+        
         self.myTableView.rowHeight = UITableViewAutomaticDimension
         
         self.myTableView.estimatedRowHeight = 200
-    
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let todolist = Todo_List[indexPath.row]
+        
+        Key = todolist.id!
+        Name = todolist.Name!
+        Note = todolist.Notes!
+        completed = todolist.Completed!
+    }
+    
+    //////////////////////////////////////////   Action Methods  //////////////////////////////////////////
+    
+    /// Save Button
+    ///
+    ///Saving item to database
+    @IBAction func saveButton(_ sender: UIButton) {
+        
+        let key = ref.childByAutoId().key
+        
+        let todo_List = ["id": key,
+                         "Name": todoListName.text! as String,
+                         "Note": todoListName.text! as String,
+                         "Completed": false as Bool] as [String : Any]
+        
+        ref.child(key).setValue(todo_List)
+    
+    }
+    
+    /// Switch
+    ///
+    ///Switch on and off function defines completed task when switch is off
     @objc func switchChanged(_ sender : UISwitch!){
         
         print("table row switch Changed \(sender.tag)")
@@ -125,6 +143,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Note = todolist.Notes!
         
         if sender.isOn{
+            
+            // on switch-on event,  completed is set to false and update in database
              sender.superview?.backgroundColor =  UIColor.white
             let todo_List = ["id": Key,
                              "Name": Name,
@@ -134,6 +154,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             ref.child(Key).setValue(todo_List)
             
         }else{
+            // on switch-off event,  completed is set to true and update in database
             sender.superview?.backgroundColor =  UIColor.lightGray
             let todo_List = ["id": Key,
                              "Name": Name,
@@ -144,21 +165,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
  
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let todolist = Todo_List[indexPath.row]
-        
-        Key = todolist.id!
-        Name = todolist.Name!
-        Note = todolist.Notes!
-        completed = todolist.Completed!
-    }
+  
     
+    /// Edit Button
+    ///
+    /// Perform Segue to DetailViewController
     @IBAction func editbutton(_ sender: UIButton) {
            performSegue(withIdentifier: "EditTodo", sender: self)
        
     }
     
+    // Transfer Values to DetailViewController for update or delete
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailController = segue.destination as! DetailViewController
         detailController.todo_Name = Name

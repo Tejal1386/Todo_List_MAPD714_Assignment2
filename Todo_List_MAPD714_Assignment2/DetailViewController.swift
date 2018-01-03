@@ -11,13 +11,14 @@ import FirebaseDatabase
 
 class DetailViewController: UIViewController {
 
-   
-    @IBOutlet weak var TodoName: UITextField!
-    
-    @IBOutlet weak var TodoNote: UITextView!
-    
+    //Database reference
     var ref: DatabaseReference!
     
+    // Outlet
+    @IBOutlet weak var TodoName: UITextField!
+    @IBOutlet weak var TodoNote: UITextView!
+    
+    //variables to get values from Previou View
     var KeyValue = String()
     var todo_Name = String()
     var todo_Note = String()
@@ -32,11 +33,11 @@ class DetailViewController: UIViewController {
         TodoNote.text = todo_Note
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-   }
+    //////////////////////////////////////////   Action Methods  //////////////////////////////////////////
     
-   
+    /// Update Button
+    ///
+    ///Update items to database
     @IBAction func update_todolist(_ sender: UIButton) {
     
         let todo_List = ["id": KeyValue,
@@ -48,7 +49,9 @@ class DetailViewController: UIViewController {
     }
     
     
-    
+    /// Delete Button
+    ///
+    ///Delete items from database
     @IBAction func delete_todolist(_ sender: UIButton) {
         ref.child(KeyValue).setValue(nil)
     }

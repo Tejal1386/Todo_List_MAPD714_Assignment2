@@ -8,6 +8,7 @@
 
 import UIKit
 
+// definig class object to get values from database and display on view
 class TodoList: NSObject {
     var id:String?
     var Notes: String?
