@@ -88,11 +88,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
          cell.switch_completed.tag = indexPath.row // for detect which row switch Changed
         
-        self.myTableView.rowHeight = UITableViewAutomaticDimension
-        
-        self.myTableView.estimatedRowHeight = 230           // setting up tableview cell height
-        
         return cell
+    }
+    
+     // setting up tableview cell height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -112,6 +113,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     ///Saving item to database
     @IBAction func saveButton(_ sender: UIButton) {
         
+        if todoListName.text != "" {
+        
         let key = ref.childByAutoId().key
         
         let todo_List = ["id": key,
@@ -120,7 +123,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                          "Completed": false as Bool] as [String : Any]
         
         ref.child(key).setValue(todo_List)
-    
+        }
     }
     
     /// Switch

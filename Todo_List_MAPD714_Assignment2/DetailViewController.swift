@@ -1,8 +1,8 @@
 /*
  Date: 3/1/2018
  FileName: ViewController.swift
- Auther's Name: Tejal Patel
- Student ID: 300972812
+ Auther's Name: Tejal Patel,Amandeep Sekhon, Mankiran Kaur
+ Student ID: 300972812, 300976886, 300990016
  file discription: Add todo list and display in tableview
  */
 
@@ -40,12 +40,13 @@ class DetailViewController: UIViewController {
     ///Update items to database
     @IBAction func update_todolist(_ sender: UIButton) {
     
+        if todo_Name != "" {
         let todo_List = ["id": KeyValue,
                          "Name": TodoName.text! as String,
                          "Note": TodoNote.text! as String,
                          "Completed": todo_Completed as Bool] as [String : Any]
         
-      ref.child(KeyValue).setValue(todo_List)
+            ref.child(KeyValue).setValue(todo_List)}
     }
     
     
@@ -53,7 +54,8 @@ class DetailViewController: UIViewController {
     ///
     ///Delete items from database
     @IBAction func delete_todolist(_ sender: UIButton) {
-        ref.child(KeyValue).setValue(nil)
+        if todo_Name != "" {
+            ref.child(KeyValue).setValue(nil)}
     }
     
 }

@@ -1,8 +1,8 @@
 /*
  Date: 3/1/2018
  FileName: ViewController.swift
- Auther's Name: Tejal Patel
- Student ID: 300972812
+ Auther's Name: Tejal Patel,Amandeep Sekhon, Mankiran Kaur
+ Student ID: 300972812, 300976886, 300990016
  file discription: Add todo list and display in tableview
  */
 

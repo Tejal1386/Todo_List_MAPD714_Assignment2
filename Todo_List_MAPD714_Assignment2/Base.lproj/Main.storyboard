@@ -30,13 +30,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCe-3E-9Gr">
-                                                    <rect key="frame" x="267" y="1" width="41" height="41"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCe-3E-9Gr">
+                                                    <rect key="frame" x="268" y="6" width="35" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="41" id="AFq-b8-fqI"/>
+                                                        <constraint firstAttribute="height" constant="35" id="rww-CR-kEG"/>
+                                                        <constraint firstAttribute="width" constant="35" id="umb-7I-anl"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <state key="normal" title="Edit">
+                                                    <state key="normal" image="edit">
                                                         <color key="titleColor" red="0.71384513380000003" green="0.73874378200000002" blue="0.2940845191" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                     <connections>
@@ -44,31 +44,26 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQA-XN-R7z">
-                                                    <rect key="frame" x="13" y="1" width="234" height="41"/>
+                                                    <rect key="frame" x="15" y="6" width="231" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbE-ha-kCP">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="317" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switch_completed:" destination="BYZ-38-t0r" eventType="valueChanged" id="sRc-eO-gyU"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="rbE-ha-kCP" secondAttribute="trailing" constant="-7" id="2Sm-cn-Hl8"/>
-                                                <constraint firstItem="MCe-3E-9Gr" firstAttribute="leading" secondItem="LQA-XN-R7z" secondAttribute="trailing" constant="20" id="ETi-vm-YoQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="rbE-ha-kCP" secondAttribute="trailing" constant="8" id="GRM-ej-pzA"/>
-                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="centerY" secondItem="rz7-LD-kT1" secondAttribute="centerY" id="HxZ-ZN-HZd"/>
-                                                <constraint firstItem="MCe-3E-9Gr" firstAttribute="centerY" secondItem="rbE-ha-kCP" secondAttribute="centerY" id="LGr-wB-dy1"/>
-                                                <constraint firstAttribute="bottom" secondItem="rbE-ha-kCP" secondAttribute="bottom" constant="6.5" id="Sdv-U1-jKo"/>
-                                                <constraint firstItem="rbE-ha-kCP" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="top" constant="6" id="TIK-d2-uBH"/>
-                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="leading" secondItem="rz7-LD-kT1" secondAttribute="leadingMargin" constant="-2" id="ULq-sj-eEt"/>
-                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="topMargin" constant="-10" id="glg-gr-2OL"/>
-                                                <constraint firstItem="rbE-ha-kCP" firstAttribute="leading" secondItem="MCe-3E-9Gr" secondAttribute="trailing" constant="10" id="ieS-GD-eGn"/>
-                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="centerY" secondItem="MCe-3E-9Gr" secondAttribute="centerY" id="kPn-yA-78e"/>
-                                                <constraint firstItem="rbE-ha-kCP" firstAttribute="leading" secondItem="MCe-3E-9Gr" secondAttribute="trailing" constant="10" id="nO0-jz-S2X"/>
+                                                <constraint firstItem="rbE-ha-kCP" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="top" constant="6" id="1lC-1A-E9f"/>
+                                                <constraint firstItem="rbE-ha-kCP" firstAttribute="leading" secondItem="MCe-3E-9Gr" secondAttribute="trailing" constant="14" id="Dmy-i9-03A"/>
+                                                <constraint firstItem="MCe-3E-9Gr" firstAttribute="leading" secondItem="LQA-XN-R7z" secondAttribute="trailing" constant="22" id="Hya-0Z-m3W"/>
+                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="top" constant="6" id="Mk8-lr-5tp"/>
+                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="leading" secondItem="rz7-LD-kT1" secondAttribute="leading" constant="15" id="Q8i-uk-362"/>
+                                                <constraint firstItem="MCe-3E-9Gr" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="top" constant="6" id="qJk-d1-Uzd"/>
+                                                <constraint firstAttribute="trailing" secondItem="rbE-ha-kCP" secondAttribute="trailing" constant="9" id="zub-ET-uLq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -281,6 +276,9 @@
             <point key="canvasLocation" x="944.79999999999995" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="edit" width="50" height="50"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PcI-JM-AGp"/>
     </inferredMetricsTieBreakers>
