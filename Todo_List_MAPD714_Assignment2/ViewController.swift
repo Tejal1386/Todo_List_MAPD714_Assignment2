@@ -1,8 +1,8 @@
 /*
  Date: 3/1/2018
  FileName: ViewController.swift
- Auther's Name: Tejal Patel
- Student ID: 300972812
+ Auther's Name: Tejal Patel,Amandeep Sekhon, Mankiran Kaur
+ Student ID: 300972812, 300976886, 300990016
  file discription: Add todo list and display in tableview
  */
 
@@ -76,25 +76,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         //here is programatically switch make to the table view
-        let switchView = UISwitch(frame: .zero)
         if list.Completed == false {
-            switchView.setOn(true, animated: true)
+            cell.switch_completed.setOn(true, animated: true)
             cell.backgroundColor =  UIColor.white
             cell.editTodo.isHidden = false
         }
         else {
             cell.backgroundColor =  UIColor.lightGray       // when task is done on switch off event tablecell is grayed out
             cell.editTodo.isHidden = true                   // when task is done on switch off event editbutton is hidden
-            switchView.setOn(false, animated: false)
+             cell.switch_completed.setOn(false, animated: false)
         }
-        switchView.tag = indexPath.row // for detect which row switch Changed
-        switchView.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
-        cell.accessoryView = switchView
-        
+         cell.switch_completed.tag = indexPath.row // for detect which row switch Changed
         
         self.myTableView.rowHeight = UITableViewAutomaticDimension
         
-        self.myTableView.estimatedRowHeight = 200
+        self.myTableView.estimatedRowHeight = 230           // setting up tableview cell height
         
         return cell
     }
@@ -130,11 +126,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     /// Switch
     ///
     ///Switch on and off function defines completed task when switch is off
-    @objc func switchChanged(_ sender : UISwitch!){
-        
-        print("table row switch Changed \(sender.tag)")
-        print("The switch is \(sender.isOn ? "ON" : "OFF")")
-        
+    
+    
+    @IBAction func switch_completed(_ sender: UISwitch) {
         
         let todolist = Todo_List[sender.tag]
         
@@ -145,7 +139,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if sender.isOn{
             
             // on switch-on event,  completed is set to false and update in database
-             sender.superview?.backgroundColor =  UIColor.white
+            sender.superview?.backgroundColor =  UIColor.white
             let todo_List = ["id": Key,
                              "Name": Name,
                              "Note": Note,
@@ -162,7 +156,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                              "Completed": true as Bool] as [String : Any]
             sender.isOn = false
             ref.child(Key).setValue(todo_List)
-        }
+    }
+    
+  
     }
  
   

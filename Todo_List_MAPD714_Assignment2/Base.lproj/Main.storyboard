@@ -31,10 +31,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCe-3E-9Gr">
-                                                    <rect key="frame" x="282" y="1" width="41" height="41"/>
+                                                    <rect key="frame" x="267" y="1" width="41" height="41"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="41" id="UKk-O1-Zws"/>
-                                                        <constraint firstAttribute="height" constant="41" id="cKa-Db-lWU"/>
+                                                        <constraint firstAttribute="width" constant="41" id="AFq-b8-fqI"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <state key="normal" title="Edit">
@@ -45,28 +44,36 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQA-XN-R7z">
-                                                    <rect key="frame" x="14" y="10" width="232" height="23"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="232" id="U2E-wf-4c7"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="232" id="ebp-vW-trk"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="13" y="1" width="234" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbE-ha-kCP">
+                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switch_completed:" destination="BYZ-38-t0r" eventType="valueChanged" id="sRc-eO-gyU"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="centerY" secondItem="rz7-LD-kT1" secondAttribute="centerY" id="0p6-ha-21E"/>
-                                                <constraint firstAttribute="trailing" secondItem="MCe-3E-9Gr" secondAttribute="trailing" constant="52" id="5fO-xo-ED3"/>
-                                                <constraint firstItem="MCe-3E-9Gr" firstAttribute="leading" secondItem="LQA-XN-R7z" secondAttribute="trailing" constant="36" id="KQn-Sn-WJv"/>
-                                                <constraint firstItem="MCe-3E-9Gr" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="top" constant="1" id="Oai-gv-MWK"/>
-                                                <constraint firstAttribute="bottom" secondItem="MCe-3E-9Gr" secondAttribute="bottom" constant="1.5" id="RFe-Z6-TZg"/>
-                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="topMargin" constant="-1" id="TtU-bv-knG"/>
-                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="leading" secondItem="rz7-LD-kT1" secondAttribute="leading" constant="14" id="ytQ-I7-h0h"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rbE-ha-kCP" secondAttribute="trailing" constant="-7" id="2Sm-cn-Hl8"/>
+                                                <constraint firstItem="MCe-3E-9Gr" firstAttribute="leading" secondItem="LQA-XN-R7z" secondAttribute="trailing" constant="20" id="ETi-vm-YoQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="rbE-ha-kCP" secondAttribute="trailing" constant="8" id="GRM-ej-pzA"/>
+                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="centerY" secondItem="rz7-LD-kT1" secondAttribute="centerY" id="HxZ-ZN-HZd"/>
+                                                <constraint firstItem="MCe-3E-9Gr" firstAttribute="centerY" secondItem="rbE-ha-kCP" secondAttribute="centerY" id="LGr-wB-dy1"/>
+                                                <constraint firstAttribute="bottom" secondItem="rbE-ha-kCP" secondAttribute="bottom" constant="6.5" id="Sdv-U1-jKo"/>
+                                                <constraint firstItem="rbE-ha-kCP" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="top" constant="6" id="TIK-d2-uBH"/>
+                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="leading" secondItem="rz7-LD-kT1" secondAttribute="leadingMargin" constant="-2" id="ULq-sj-eEt"/>
+                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="top" secondItem="rz7-LD-kT1" secondAttribute="topMargin" constant="-10" id="glg-gr-2OL"/>
+                                                <constraint firstItem="rbE-ha-kCP" firstAttribute="leading" secondItem="MCe-3E-9Gr" secondAttribute="trailing" constant="10" id="ieS-GD-eGn"/>
+                                                <constraint firstItem="LQA-XN-R7z" firstAttribute="centerY" secondItem="MCe-3E-9Gr" secondAttribute="centerY" id="kPn-yA-78e"/>
+                                                <constraint firstItem="rbE-ha-kCP" firstAttribute="leading" secondItem="MCe-3E-9Gr" secondAttribute="trailing" constant="10" id="nO0-jz-S2X"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="editTodo" destination="MCe-3E-9Gr" id="kbZ-kk-On4"/>
+                                            <outlet property="switch_completed" destination="rbE-ha-kCP" id="1hT-bd-wi9"/>
                                             <outlet property="todoName" destination="LQA-XN-R7z" id="FVv-tj-TV4"/>
                                         </connections>
                                     </tableViewCell>
@@ -81,8 +88,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cIL-eJ-Spp"/>
                                 </constraints>
-                                <color key="textColor" red="0.71384513380000003" green="0.73874378200000002" blue="0.2940845191" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.54055282393176041" green="0.55951234164467012" blue="0.2283367924826665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Todo List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuY-Bg-xw3">
